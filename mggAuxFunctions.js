@@ -21,9 +21,4 @@ function mggIsArraySorted(array){
 
 }
 
-module.exports = {
-
-	mggOnlyNumbers
-	, mggIsArraySorted
-
-};
+module.exports = {mggOnlyNumbers , mggIsArraySorted};
