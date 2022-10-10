@@ -1,5 +1,5 @@
 /*
- *  LIBRARY OF STATISTICS MARCELO GOMES GADELHA
+ *  Statistics Module: Marcelo Gomes Gadelha (MGG)
  */
 
 const mggAux = require("./mggAuxFunctions");
@@ -12,17 +12,17 @@ function mggMean(array){
 
 }
 
-function mggMedian(array){
+function mggMedian(array, sort=false){
 
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
-	if(!mggAux.mggIsArraySorted(array)) throw "Array not Sorted";
+	if(!mggAux.mggIsArraySorted(array))
+		if(sort) throw "Array not Sorted";
+		else array = mggAux.mggArraySort(array);
 	
-	mod = array.length % 2;
-	i = Math.trunc(array.length / 2);
-	j = Math.trunc(i + 1);
-
-	console.log(array.length + "  "+ mod + " " + i + " " + j);
+	let mod = array.length % 2;
+	let i = Math.trunc(array.length / 2);
+	let j = Math.trunc(i + 1);
 
 	if(mod === 0) return (array[i-1] + array[j-1]) / 2;
 	else return array[i];

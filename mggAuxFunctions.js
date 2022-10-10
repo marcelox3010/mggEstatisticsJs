@@ -21,4 +21,10 @@ function mggIsArraySorted(array){
 
 }
 
-module.exports = {mggOnlyNumbers , mggIsArraySorted};
+function mggArraySort(array){
+
+    return array.sort(function(a, b){return a-b});
+
+}
+
+module.exports = {mggOnlyNumbers , mggIsArraySorted, mggArraySort};
