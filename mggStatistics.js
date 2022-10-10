@@ -3,6 +3,7 @@
  */
 
 const mggAux = require("./mggAuxFunctions");
+const {mggArraySort} = require("./mggAuxFunctions");
 
 function mggMean(array){
 
@@ -12,14 +13,20 @@ function mggMean(array){
 
 }
 
-function mggMedian(array, sort=false){
+function mggMedian(array, toSort = false){
 
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
-	if(!mggAux.mggIsArraySorted(array))
-		if(sort) throw "Array not Sorted";
-		else array = mggAux.mggArraySort(array);
-	
+	if(!mggAux.mggIsArraySorted(array)) {
+
+		if(toSort){
+
+			array = mggArraySort(array);
+
+		}else return NaN;
+
+	}
+
 	let mod = array.length % 2;
 	let i = Math.trunc(array.length / 2);
 	let j = Math.trunc(i + 1);
@@ -28,5 +35,7 @@ function mggMedian(array, sort=false){
 	else return array[i];
 
 }
+
+
 
 module.exports = {mggMean , mggMedian};
