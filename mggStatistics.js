@@ -3,10 +3,10 @@
  */
 
 const mggAux = require("./mggAuxFunctions");
-const {mggArraySort} = require("./mggAuxFunctions");
 
 function mggMean(array){
 
+	if(!mggAux.mggEmptyArray(array)) return NaN;
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
 	return array.reduce((a, b) => a + b, 0) / array.length;
@@ -15,13 +15,13 @@ function mggMean(array){
 
 function mggMedian(array, toSort = false){
 
+	if(!mggAux.mggEmptyArray(array)) return NaN;
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
-
 	if(!mggAux.mggIsArraySorted(array)) {
 
 		if(toSort){
 
-			array = mggArraySort(array);
+			array = mggAux.mggArraySort(array);
 
 		}else return NaN;
 
@@ -36,6 +36,39 @@ function mggMedian(array, toSort = false){
 
 }
 
+function mggMode(array){
 
+	if(mggAux.mggEmptyArray(array)) return NaN;
+	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
-module.exports = {mggMean , mggMedian};
+	let arrayRepetidos = [];
+	let mode;
+	let maxQtd = 0;
+	let arrayReturn = [];
+
+	for(let n of array){
+
+		if(arrayRepetidos.filter(f => {return f === n}) > 0) continue;
+		else arrayRepetidos.push(n);
+
+		let qtd = array.filter(f => {return f === n}).length;
+
+		if(mode == null){
+			mode = n;
+			maxQtd = qtd;
+			continue;
+		}
+
+		console.log(n +  " " + qtd + " " + mode);
+
+		if(qtd > maxQtd){
+			mode = n;
+			maxQtd = qtd;
+		}
+	}
+
+	return mode;
+
+}
+
+module.exports = {mggMean, mggMedian, mggMode};

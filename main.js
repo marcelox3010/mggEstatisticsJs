@@ -46,3 +46,16 @@ console.log(mggS.mggMedian(arrayTest4));
 console.log("Test 7 --->");
 console.log(arrayTest4);
 console.log(mggS.mggMedian(arrayTest4, true));
+
+console.log("Test 8 ---> MODA");
+let a = [];
+console.log(a)
+console.log(mggS.mggMode(a));
+let b = ['1',2,3,3,3,1,2,2,1,1,1,1,1,3,3,3,3,3,3,3];
+console.log(b)
+console.log(mggS.mggMode(b));
+let c = [1,2,3,3,3,1,2,2,1,1,1,1,1,3,3,3,3,3,3,3];
+console.log(c)
+console.log(mggS.mggMode(c));
+
+console.log("Fim");

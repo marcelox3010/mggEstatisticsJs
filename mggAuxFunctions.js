@@ -1,4 +1,11 @@
 
+function mggEmptyArray(array){
+
+    if(array.length == 0) return true;
+
+    return false;
+
+}
 
 function mggOnlyNumbers(array){
 
@@ -27,4 +34,4 @@ function mggArraySort(array){
 
 }
 
-module.exports = {mggOnlyNumbers , mggIsArraySorted, mggArraySort};
+module.exports = {mggEmptyArray, mggOnlyNumbers , mggIsArraySorted, mggArraySort};
