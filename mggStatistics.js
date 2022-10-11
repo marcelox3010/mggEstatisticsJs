@@ -45,6 +45,7 @@ function mggMode(array){
 	let mode;
 	let maxQtd = 0;
 	let arrayReturn = [];
+	let map = mggAux.mggTableCount(array);
 
 	for(let n of array){
 
