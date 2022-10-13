@@ -9,7 +9,7 @@ function mggMean(array){
 	if(!mggAux.mggEmptyArray(array)) return NaN;
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
-	return array.reduce((a, b) => a + b, 0) / array.length;
+	return mggAux.mggSumArray(array) / array.length;
 
 }
 
@@ -66,9 +66,9 @@ function mggMode(array){
 
 }
 
-function mggLinearRegressionAB(array){
+function mggLinearRegressionAB(arrayX, arrayY){
 
-	
+
 
 }
 

@@ -1,4 +1,11 @@
 
+function mggSumArray(array){
+
+    return array.reduce((a, b) => a + b, 0);
+
+}
+
+
 function mggEmptyArray(array){
 
     if(array.length == 0) return true;
@@ -52,4 +59,4 @@ function mggTableCount(array){
 
 }
 
-module.exports = {mggEmptyArray, mggOnlyNumbers , mggIsArraySorted, mggArraySort, mggTableCount};
+module.exports = {mggSumArray, mggEmptyArray, mggOnlyNumbers , mggIsArraySorted, mggArraySort, mggTableCount};
