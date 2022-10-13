@@ -37,14 +37,14 @@ function mggArraySort(array){
 function mggTableCount(array){
 
     let map = new Map();
-    let arrayRepetidos = [];
+    let arrayRepeated = [];
 
     for(let n of array){
 
-        if(arrayRepetidos.filter(f => {return f === n}) > 0) continue;
-        else arrayRepetidos.push(n);
+        if(arrayRepeated.filter(f => {return f === n}) > 0) continue;
+        else arrayRepeated.push(n);
         let qtd = array.filter(f => {return f === n}).length;
-        map.set("valor "+ n, qtd);
+        map.set(n, qtd);
 
     }
 

@@ -41,35 +41,35 @@ function mggMode(array){
 	if(mggAux.mggEmptyArray(array)) return NaN;
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
-	let arrayRepetidos = [];
-	let mode;
 	let maxQtd = 0;
-	let arrayReturn = [];
-	let map = mggAux.mggTableCount(array);
+	let mapReturn = new Map;
+	let tableData = mggAux.mggTableCount(array);
+	console.log(tableData);
 
-	for(let n of array){
+	tableData.forEach((v,k)=>{
 
-		if(arrayRepetidos.filter(f => {return f === n}) > 0) continue;
-		else arrayRepetidos.push(n);
+		if(v == maxQtd){
 
-		let qtd = array.filter(f => {return f === n}).length;
+			mapReturn.set(k, v);
 
-		if(mode == null){
-			mode = n;
-			maxQtd = qtd;
-			continue;
+		}else if(v > maxQtd){
+
+			mapReturn.clear();
+			mapReturn.set(k, v);
+			maxQtd = v;
+
 		}
 
-		console.log(n +  " " + qtd + " " + mode);
+	});
 
-		if(qtd > maxQtd){
-			mode = n;
-			maxQtd = qtd;
-		}
-	}
-
-	return mode;
+	return Array.from(mapReturn.keys());
 
 }
 
-module.exports = {mggMean, mggMedian, mggMode};
+function mggLinearRegressionAB(array){
+
+	
+
+}
+
+module.exports = {mggMean, mggMedian, mggMode, mggLinearRegressionAB};
