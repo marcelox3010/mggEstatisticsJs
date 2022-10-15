@@ -66,6 +66,24 @@ function mggMode(array){
 
 }
 
+function mggStandardDeviation(array, sample=false){
+
+	if(mggAux.mggEmptyArray(array)) return NaN;
+	if(!mggAux.mggOnlyNumbers(array)) return NaN;
+
+	const n = array.length
+	const meanArray = mggAux.mggSumArray(array) / array.length
+	const deviations = array.map((v) => {return v - meanArray})
+	const deviationsPow2 = deviations.map((v) => {return Math.pow(v,2)})
+	let sampleMinus = 0
+	if(sample === true) sampleMinus = 1;
+	let variance = mggAux.mggSumArray(deviationsPow2) / (n-sampleMinus)
+	//else variance = mggAux.mggSumArray(deviationsPow2) / (n)
+
+	return Math.sqrt(variance)
+
+}
+
 function mggLinearRegressionAB(arrayX, arrayY){
 
 	if(mggAux.mggEmptyArray(arrayX)) return NaN;
@@ -94,4 +112,4 @@ function mggLinearRegressionAB(arrayX, arrayY){
 
 }
 
-module.exports = {mggMean, mggMedian, mggMode, mggLinearRegressionAB};
+module.exports = {mggMean, mggMedian, mggMode, mggStandardDeviation, mggLinearRegressionAB};

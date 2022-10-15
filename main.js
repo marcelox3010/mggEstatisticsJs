@@ -71,3 +71,12 @@ console.log(ax)
 console.log(ay)
 
 console.log(mggS.mggLinearRegressionAB(ax, ay))
+
+console.log("Test 10 ---> desvio padrão");
+
+const turmaA = [4, 5, 5, 6, 6, 7, 7, 8];
+const turmaB = [1, 2, 4, 6, 6, 9, 10, 10];
+const turmaC = [0, 6, 7, 7, 7, 7.5, 7.5];
+console.log("Turma A: " + mggS.mggStandardDeviation(turmaA, true))
+console.log("Turma B: " + mggS.mggStandardDeviation(turmaB, true))
+console.log("Turma C: " + mggS.mggStandardDeviation(turmaC, true))
