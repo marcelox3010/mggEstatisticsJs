@@ -59,3 +59,15 @@ let c = [1,1,1,2,2,2,3,4];
 console.log(c)
 console.log(mggS.mggMode(c));
 console.log("Fim");
+
+console.log("Test 9 ---> REGRASSÃO LINEAR");
+
+
+let ax = [164,166,169,169,171,173,173,176,178]
+
+let ay = [166,166,171,166,171,171,178,173,178]
+
+console.log(ax)
+console.log(ay)
+
+console.log(mggS.mggLinearRegressionAB(ax, ay))
