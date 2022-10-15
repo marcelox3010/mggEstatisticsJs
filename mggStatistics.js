@@ -78,7 +78,6 @@ function mggStandardDeviation(array, sample=false){
 	let sampleMinus = 0
 	if(sample === true) sampleMinus = 1;
 	let variance = mggAux.mggSumArray(deviationsPow2) / (n-sampleMinus)
-	//else variance = mggAux.mggSumArray(deviationsPow2) / (n)
 
 	return Math.sqrt(variance)
 
