@@ -4,18 +4,28 @@
 
 const mggAux = require("./mggAuxFunctions");
 
+module.exports = {
+	mggMedian
+	, mggMode
+	, mggStandardDeviation
+	, mggPearsonCorrelationCoefficient
+	, mggLinearRegressionAB
+	, mggMean
+};
+
 function mggMean(array){
 
-	if(!mggAux.mggEmptyArray(array)) return NaN;
+	if(mggAux.mggEmptyArray(array)) return NaN;
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
 	return mggAux.mggSumArray(array) / array.length;
 
 }
 
+
 function mggMedian(array, toSort = false){
 
-	if(!mggAux.mggEmptyArray(array)) return NaN;
+	if(mggAux.mggEmptyArray(array)) return NaN;
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 	if(!mggAux.mggIsArraySorted(array)) {
 
@@ -72,7 +82,7 @@ function mggStandardDeviation(array, sample=false){
 	if(!mggAux.mggOnlyNumbers(array)) return NaN;
 
 	const n = array.length
-	const meanArray = mggAux.mggSumArray(array) / array.length
+	const meanArray = mggMean(array)
 	const deviations = array.map((v) => {return v - meanArray})
 	const deviationsPow2 = deviations.map((v) => {return Math.pow(v,2)})
 	let sampleMinus = 0
@@ -80,6 +90,17 @@ function mggStandardDeviation(array, sample=false){
 	let variance = mggAux.mggSumArray(deviationsPow2) / (n-sampleMinus)
 
 	return Math.sqrt(variance)
+
+}
+
+function mggPearsonCorrelationCoefficient(arrayX, arrayY){
+
+	if(mggAux.mggEmptyArray(arrayX)) return NaN;
+	if(!mggAux.mggOnlyNumbers(arrayX)) return NaN;
+	if(mggAux.mggEmptyArray(arrayY)) return NaN;
+	if(!mggAux.mggOnlyNumbers(arrayY)) return NaN;
+	if(arrayY.length !== arrayX.length) return NaN;
+
 
 }
 
@@ -106,9 +127,13 @@ function mggLinearRegressionAB(arrayX, arrayY){
 	let rAB = new Map();
 	rAB.set("a", a)
 	rAB.set("b", b)
+	rAB.set("A", a)
+	rAB.set("B", b)
+	rAB.set("α", a)
+	rAB.set("β", b)
 
 	return rAB;
 
 }
 
-module.exports = {mggMean, mggMedian, mggMode, mggStandardDeviation, mggLinearRegressionAB};
+
