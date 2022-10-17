@@ -1,20 +1,22 @@
 
 function mggSumArray(array){
 
-    return array.reduce((a, b) => a + b, 0);
+    return array.reduce((a, b) => a + b, 0)
 
 }
+
+
 function mggEmptyArray(array){
 
-    if(array.length == 0) return true;
+    if(array.length == 0) return true
 
-    return false;
+    return false
 
 }
 
 function mggOnlyNumbers(array){
 
-    return array.every(element => {return typeof element === 'number';});
+    return array.every(element => {return typeof element === 'number'})
 
 }
 
@@ -24,8 +26,8 @@ function mggIsArraySorted(array){
 
     for (let i = 0; i < array.length - 1; i++) {
         if (array[i] > array[i+1]) {
-            sorted = false;
-            break;
+            sorted = false
+            break
         }
     }
 
@@ -41,29 +43,29 @@ function mggArraySort(array){
 
 function mggTableCount(array){
 
-    let map = new Map();
-    let arrayRepeated = [];
+    let map = new Map()
+    let arrayRepeated = []
 
     for(let n of array){
 
-        if(arrayRepeated.filter(f => {return f === n}) > 0) continue;
-        else arrayRepeated.push(n);
-        let qtd = array.filter(f => {return f === n}).length;
-        map.set(n, qtd);
+        if(arrayRepeated.filter(f => {return f === n}) > 0) continue
+        else arrayRepeated.push(n)
+        let qtd = array.filter(f => {return f === n}).length
+        map.set(n, qtd)
 
     }
 
-    return map;
+    return map
 
 }
 
 
 function mggMean(array){
 
-    if(mggEmptyArray(array)) return NaN;
-    if(!mggOnlyNumbers(array)) return NaN;
+    if(mggEmptyArray(array)) return NaN
+    if(!mggOnlyNumbers(array)) return NaN
 
-    return mggSumArray(array) / array.length;
+    return mggSumArray(array) / array.length
 
 }
 
@@ -76,48 +78,48 @@ function mggMedian(array, toSort = false){
 
         if(toSort){
 
-            array = mggArraySort(array);
+            array = mggArraySort(array)
 
         }else return NaN;
 
     }
 
-    let mod = array.length % 2;
-    let i = Math.trunc(array.length / 2);
-    let j = Math.trunc(i + 1);
+    let mod = array.length % 2
+    let i = Math.trunc(array.length / 2)
+    let j = Math.trunc(i + 1)
 
-    if(mod === 0) return (array[i-1] + array[j-1]) / 2;
-    else return array[i];
+    if(mod === 0) return (array[i-1] + array[j-1]) / 2
+    else return array[i]
 
 }
 
 function mggMode(array){
 
-    if(mggEmptyArray(array)) return NaN;
-    if(!mggOnlyNumbers(array)) return NaN;
+    if(mggEmptyArray(array)) return NaN
+    if(!mggOnlyNumbers(array)) return NaN
 
-    let maxQtd = 0;
-    let mapReturn = new Map;
-    let tableData = mggTableCount(array);
-    console.log(tableData);
+    let maxQtd = 0
+    let mapReturn = new Map
+    let tableData = mggTableCount(array)
+    console.log(tableData)
 
     tableData.forEach((v,k)=>{
 
         if(v === maxQtd){
 
-            mapReturn.set(k, v);
+            mapReturn.set(k, v)
 
         }else if(v > maxQtd){
 
-            mapReturn.clear();
-            mapReturn.set(k, v);
-            maxQtd = v;
+            mapReturn.clear()
+            mapReturn.set(k, v)
+            maxQtd = v
 
         }
 
     });
 
-    return Array.from(mapReturn.keys());
+    return Array.from(mapReturn.keys())
 
 }
 
@@ -165,23 +167,23 @@ function mggPearsonCorrelationCoefficient(arrayX, arrayY){
 
 function mggLinearRegressionAB(arrayX, arrayY){
 
-    if(mggEmptyArray(arrayX)) return NaN;
-    if(!mggOnlyNumbers(arrayX)) return NaN;
-    if(mggEmptyArray(arrayY)) return NaN;
-    if(!mggOnlyNumbers(arrayY)) return NaN;
-    if(arrayY.length !== arrayX.length) return NaN;
+    if(mggEmptyArray(arrayX)) return NaN
+    if(!mggOnlyNumbers(arrayX)) return NaN
+    if(mggEmptyArray(arrayY)) return NaN
+    if(!mggOnlyNumbers(arrayY)) return NaN
+    if(arrayY.length !== arrayX.length) return NaN
 
-    let sumArrayX = mggSumArray(arrayX);
+    let sumArrayX = mggSumArray(arrayX)
     let sumArrayX2 = mggSumArray(arrayX.map((v) => {return Math.pow(v,2)}));
-    let sumArrayY = mggSumArray(arrayY);
-    let arrayXY = arrayX.map((v, i) => { return v * arrayY[i] });
-    let sumArrayXY = mggSumArray(arrayXY);
-    let n = arrayX.length;
+    let sumArrayY = mggSumArray(arrayY)
+    let arrayXY = arrayX.map((v, i) => { return v * arrayY[i] })
+    let sumArrayXY = mggSumArray(arrayXY)
+    let n = arrayX.length
 
     let b = ( (n * sumArrayXY) - (sumArrayX * sumArrayY) )
-        / ( (n * sumArrayX2) - Math.pow(sumArrayX, 2) );
+        / ( (n * sumArrayX2) - Math.pow(sumArrayX, 2) )
 
-    let a = (sumArrayY - (b * sumArrayX)) / n ;
+    let a = (sumArrayY - (b * sumArrayX)) / n
 
     let rAB = new Map();
     rAB.set("a", a)
@@ -194,3 +196,5 @@ function mggLinearRegressionAB(arrayX, arrayY){
     return rAB;
 
 }
+
+
