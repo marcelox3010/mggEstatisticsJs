@@ -80,3 +80,8 @@ const turmaC = [0, 6, 7, 7, 7, 7.5, 7.5];
 console.log("Turma A: " + mggS.mggStandardDeviation(turmaA, true))
 console.log("Turma B: " + mggS.mggStandardDeviation(turmaB, true))
 console.log("Turma C: " + mggS.mggStandardDeviation(turmaC, true))
+
+console.log("Test 10 ---> pearson");
+arrayX = [2,3,4,5,5,6,7,8]
+arrayY = [4,7,9,10,11,11,13,15]
+console.log(mggS.mggPearsonCorrelationCoefficient(arrayX, arrayY))

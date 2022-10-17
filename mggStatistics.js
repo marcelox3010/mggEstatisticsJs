@@ -5,12 +5,14 @@
 const mggAux = require("./mggAuxFunctions");
 
 module.exports = {
-	mggMedian
+
+	  mggMean
+	, mggMedian
 	, mggMode
 	, mggStandardDeviation
 	, mggPearsonCorrelationCoefficient
 	, mggLinearRegressionAB
-	, mggMean
+
 };
 
 function mggMean(array){
@@ -95,12 +97,26 @@ function mggStandardDeviation(array, sample=false){
 
 function mggPearsonCorrelationCoefficient(arrayX, arrayY){
 
-	if(mggAux.mggEmptyArray(arrayX)) return NaN;
-	if(!mggAux.mggOnlyNumbers(arrayX)) return NaN;
-	if(mggAux.mggEmptyArray(arrayY)) return NaN;
-	if(!mggAux.mggOnlyNumbers(arrayY)) return NaN;
-	if(arrayY.length !== arrayX.length) return NaN;
+	if(mggAux.mggEmptyArray(arrayX)) return NaN
+	if(!mggAux.mggOnlyNumbers(arrayX)) return NaN
+	if(mggAux.mggEmptyArray(arrayY)) return NaN
+	if(!mggAux.mggOnlyNumbers(arrayY)) return NaN
+	if(arrayY.length !== arrayX.length) return NaN
 
+	let n = arrayX.length
+
+	let sumArrayX = mggAux.mggSumArray(arrayX)
+	let arrayX2 = arrayX.map((v) => {return Math.pow(v,2)})
+	let sumArrayX2 = mggAux.mggSumArray(arrayX2)
+
+	let sumArrayY = mggAux.mggSumArray(arrayY)
+	let arrayY2 = arrayY.map((v) => {return Math.pow(v,2)})
+	let sumArrayY2 = mggAux.mggSumArray(arrayY2)
+
+	let arrayXY = arrayX.map((v,i)=>{return v * arrayY[i]})
+	let sumArrayXY = mggAux.mggSumArray(arrayXY)
+
+	return	((n * sumArrayXY) - (sumArrayX * sumArrayY)) / (Math.sqrt( (n*sumArrayX2) - Math.pow(sumArrayX,2)) * (Math.sqrt( (n*sumArrayY2) - Math.pow(sumArrayY,2))))
 
 }
 
