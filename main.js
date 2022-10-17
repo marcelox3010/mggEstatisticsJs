@@ -85,3 +85,14 @@ console.log("Test 10 ---> pearson");
 arrayX = [2,3,4,5,5,6,7,8]
 arrayY = [4,7,9,10,11,11,13,15]
 console.log(mggS.mggPearsonCorrelationCoefficient(arrayX, arrayY))
+
+console.log("Test 11 ---> REGRASSÃO LINEAR MODELO DE PREDIÇÃO");
+
+
+ax = [164,166,169,169,171,173,173,176,178]
+ay = [166,166,171,166,171,171,178,173,178]
+
+console.log(ax)
+console.log(ay)
+
+console.log(mggS.mggLinearRegressionPredictModel(mggS.mggLinearRegressionAB(ax, ay), ax))

@@ -12,6 +12,7 @@ module.exports = {
 	, mggStandardDeviation
 	, mggPearsonCorrelationCoefficient
 	, mggLinearRegressionAB
+	, mggLinearRegressionPredictModel
 
 };
 
@@ -152,4 +153,17 @@ function mggLinearRegressionAB(arrayX, arrayY){
 
 }
 
+function mggLinearRegressionPredictModel(mapAB, array){
 
+	if(mggAux.mggEmptyArray(array)) return NaN
+	if(!mggAux.mggOnlyNumbers(array)) return NaN
+
+	let a = mapAB.get("a")
+	let b = mapAB.get("b")
+
+	if(a == 'undefined') return NaN
+	if(b == 'undefined') return NaN
+
+	return array.map((x)=> a + (b * x))
+
+}
