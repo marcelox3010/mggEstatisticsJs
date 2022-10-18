@@ -14,6 +14,7 @@ module.exports = {
 	, mggLinearRegressionAB
 	, mggLinearRegressionPredictModel
 	, mggClassNumber
+	, mggClassAmplitude
 
 };
 
