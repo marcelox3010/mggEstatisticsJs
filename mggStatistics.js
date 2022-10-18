@@ -13,6 +13,7 @@ module.exports = {
 	, mggPearsonCorrelationCoefficient
 	, mggLinearRegressionAB
 	, mggLinearRegressionPredictModel
+	, mggClassNumber
 
 };
 
@@ -161,9 +162,22 @@ function mggLinearRegressionPredictModel(mapAB, array){
 	let a = mapAB.get("a")
 	let b = mapAB.get("b")
 
-	if(a == 'undefined') return NaN
-	if(b == 'undefined') return NaN
+	if(a == null || isNaN(a)) return NaN
+	if(b == null || isNaN(b)) return NaN
 
 	return array.map((x)=> a + (b * x))
 
 }
+
+function mggClassNumber(array){
+
+	return Math.ceil(Math.sqrt(dados.length));
+
+}
+
+function mggClassAmplitude(amplitude, numeroClasses){
+
+	return amplitude / (numeroClasses - 1);
+
+}
+
