@@ -16,6 +16,7 @@ module.exports = {
 	, mggStandardClassNumber
 	, mggClassAmplitude
 	, mggRange
+	, mggIntervalRange
 
 };
 
@@ -176,16 +177,7 @@ function mggStandardClassNumber(array){
 	return Math.ceil(Math.sqrt(array.length));
 
 }
-
-
-
-function mggClassAmplitude(amplitude, numeroClasses){
-
-	return amplitude / (numeroClasses - 1);
-
-}
-
-
+ 
 function mggRange(array){
 
 	let min = Math.min.apply(Math, array);
@@ -195,25 +187,25 @@ function mggRange(array){
 
 }
 
-//function mggClasses(array, ){
-//
-//	let min = Math.min.apply(Math, dados);	
-//	let numeroClasses =  mggNumeroClasses(dados);
-//	let amplitude = mggAmplitude(dados);
-//	let amplitudeIntervaloClasses = mggAmplitudeIntervaloClasses(amplitude,numeroClasses);
-//	let classes = [];
-//
-//	for(i = 0 ; i < numeroClasses ; i++){
-//
-//		let limiteInferior = min - (amplitudeIntervaloClasses/ 2);
-//		let limiteSuperior = limiteInferior + amplitudeIntervaloClasses;
-//				
-//		classes.push([limiteInferior, limiteSuperior]);
-//
-//		min = limiteSuperior + (amplitudeIntervaloClasses / 2);
-//
-//	}
-//
-//	return classes;
-//
-//}
+function mggIntervalRange(array, ClassNumber){
+
+	let min = Math.min.apply(Math, dados);	
+	let numeroClasses =  mggNumeroClasses(dados);
+	let amplitude = mggAmplitude(dados);
+	let amplitudeIntervaloClasses = mggAmplitudeIntervaloClasses(amplitude,numeroClasses);
+	let classes = [];
+
+	for(i = 0 ; i < numeroClasses ; i++){
+
+		let limiteInferior = min - (amplitudeIntervaloClasses/ 2);
+		let limiteSuperior = limiteInferior + amplitudeIntervaloClasses;
+				
+		classes.push([limiteInferior, limiteSuperior]);
+
+		min = limiteSuperior + (amplitudeIntervaloClasses / 2);
+
+	}
+
+	return classes;
+
+}
