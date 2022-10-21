@@ -13,8 +13,9 @@ module.exports = {
 	, mggPearsonCorrelationCoefficient
 	, mggLinearRegressionAB
 	, mggLinearRegressionPredictModel
-	, mggClassNumber
+	, mggStandardClassNumber
 	, mggClassAmplitude
+	, mggRange
 
 };
 
@@ -170,11 +171,13 @@ function mggLinearRegressionPredictModel(mapAB, array){
 
 }
 
-function mggClassNumber(array){
+function mggStandardClassNumber(array){
 
-	return Math.ceil(Math.sqrt(dados.length));
+	return Math.ceil(Math.sqrt(array.length));
 
 }
+
+
 
 function mggClassAmplitude(amplitude, numeroClasses){
 
@@ -182,3 +185,35 @@ function mggClassAmplitude(amplitude, numeroClasses){
 
 }
 
+
+function mggRange(array){
+
+	let min = Math.min.apply(Math, array);
+	let max = Math.max.apply(Math, array);
+
+	return max - min;
+
+}
+
+//function mggClasses(array, ){
+//
+//	let min = Math.min.apply(Math, dados);	
+//	let numeroClasses =  mggNumeroClasses(dados);
+//	let amplitude = mggAmplitude(dados);
+//	let amplitudeIntervaloClasses = mggAmplitudeIntervaloClasses(amplitude,numeroClasses);
+//	let classes = [];
+//
+//	for(i = 0 ; i < numeroClasses ; i++){
+//
+//		let limiteInferior = min - (amplitudeIntervaloClasses/ 2);
+//		let limiteSuperior = limiteInferior + amplitudeIntervaloClasses;
+//				
+//		classes.push([limiteInferior, limiteSuperior]);
+//
+//		min = limiteSuperior + (amplitudeIntervaloClasses / 2);
+//
+//	}
+//
+//	return classes;
+//
+//}

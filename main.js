@@ -86,7 +86,7 @@ arrayX = [2,3,4,5,5,6,7,8]
 arrayY = [4,7,9,10,11,11,13,15]
 console.log(mggS.mggPearsonCorrelationCoefficient(arrayX, arrayY))
 
-console.log("Test 11 ---> REGRASSÃO LINEAR MODELO DE PREDIÇÃO");
+console.log("Test 11 ---> REGRESSÃO LINEAR MODELO DE PREDIÇÃO");
 
 
 ax = [164,166,169,169,171,173,173,176,178]
@@ -96,3 +96,16 @@ console.log(ax)
 console.log(ay)
 
 console.log(mggS.mggLinearRegressionPredictModel(mggS.mggLinearRegressionAB(ax, ay), ax))
+
+
+console.log("Test 12 ---> Classes");
+
+ax = [164,166,169,169,171,173,173,176,178]
+
+let qtdClasses = mggS.mggStandardClassNumber(ax)
+console.log("Quantidade de Classes: " + qtdClasses)
+
+console.log("Test 13 ---> amplitude range");
+
+let amplitude = mggS.mggRange(ax)
+console.log("Amplitude: " + amplitude)
