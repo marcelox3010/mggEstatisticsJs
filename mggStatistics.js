@@ -231,7 +231,7 @@ function mggQuartiles(array){
 
 		r.set("q2",median)
 
-		let arrayQ2 = array.slice(Math.trunc(n/2), n-1)
+		let arrayQ2 = array.slice(Math.trunc(n/2), n)
 		console.log("par array q1: " + arrayQ2)		
 		r.set("q3", mggMedian(arrayQ2))
 		
