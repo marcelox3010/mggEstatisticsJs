@@ -14,10 +14,9 @@ module.exports = {
 	, mggLinearRegressionAB
 	, mggLinearRegressionPredictModel
 	, mggStandardClassNumber
-
+	, mggIntervalRange
 	, mggQuartiles
-
-
+	,  mggOutLiers
 
 };
 
@@ -231,8 +230,34 @@ function mggQuartiles(array){
 
 	}
 
-	r.set("dQ",r.get("q3") - r.get("q1"))
+	r.set("iqr",r.get("q3") - r.get("q1"))
 
 	return r
+
+}
+
+function mggOutLiers(array){
+
+	let mapQuantile = mggQuartiles(array)
+	let iqr = mapQuantile.get("iqr")
+	let q1 = mapQuantile.get("q1")
+	let q3 = mapQuantile.get("q3")
+	let outLiers = []
+	
+	array.forEach(
+
+		(obs) => {
+
+			if((obs < q1 - (1.5 * iqr)) || (obs > q3 + (1.5 *iqr))){
+
+				outLiers.push(obs)
+
+			}
+
+		}
+
+	)
+
+	return outLiers
 
 }
