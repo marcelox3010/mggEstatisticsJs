@@ -15,6 +15,7 @@ module.exports = {
 	, mggLinearRegressionPredictModel
 	, mggClassNumber
 	, mggClassAmplitude
+	, mggQuartiles
 
 };
 
@@ -172,13 +173,70 @@ function mggLinearRegressionPredictModel(mapAB, array){
 
 function mggClassNumber(array){
 
-	return Math.ceil(Math.sqrt(dados.length));
+	return Math.ceil(Math.sqrt(dados.length))
 
 }
 
 function mggClassAmplitude(amplitude, numeroClasses){
 
-	return amplitude / (numeroClasses - 1);
+	return amplitude / (numeroClasses - 1)
 
 }
 
+function mggQuartiles(array){
+
+	if(mggAux.mggEmptyArray(array)) 	return NaN
+	if(!mggAux.mggOnlyNumbers(array)) 	return NaN
+	if(!mggAux.mggIsArraySorted(array)) array = mggAux.mggArraySort(array)
+	
+	console.log(array)
+	let n = array.length
+	let median = mggMedian(array)
+	let arrayImpar = ((array.length % 2) != 0)? true : false;
+
+	let r = new Map();
+	r.set("median", median)
+	r.set("mean", mggMean(array))
+
+	let i = 0
+	if(arrayImpar){
+		
+		r.set("min",array[0])
+
+		let arrayQ1 = array.slice(0, Math.trunc(n/2)+1)
+		console.log("impar array q1: " + arrayQ1)		
+		r.set("q1", mggMedian(arrayQ1))
+
+		let iQ2 = ((n + 1)/2)-1 //-1 because array start in 0
+		console.log("indice q2 "+iQ2)
+		r.set("q2",array[iQ2])
+
+		let arrayQ2 = array.slice(Math.trunc(n/2)+1, n-1)
+		console.log("impar array q1: " + arrayQ2)		
+		r.set("q3", mggMedian(arrayQ2))
+		
+		r.set("max", array[n-1])
+		
+	}else{
+		
+		console.log("par")
+		
+		r.set("min",array[0])
+
+		let arrayQ1 = array.slice(0, Math.trunc(n/2))
+		console.log("par array q1: " + arrayQ1)		
+		r.set("q1", mggMedian(arrayQ1))
+
+		r.set("q2",median)
+
+		let arrayQ2 = array.slice(Math.trunc(n/2), n-1)
+		console.log("par array q1: " + arrayQ2)		
+		r.set("q3", mggMedian(arrayQ2))
+		
+		r.set("max", array[n-1])
+
+	}
+
+	return r
+
+}
