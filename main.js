@@ -97,12 +97,21 @@ console.log(ay)
 
 console.log(mggS.mggLinearRegressionPredictModel(mggS.mggLinearRegressionAB(ax, ay), ax))
 
-console.log("Test 12 ---> QUARTIS");
+console.log("Test 12 ---> QUARTIS")
 
 ax = [164,166,169,169,171,173,173,176,178,180,191]
 ax = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 ax = [2,3,4,4,5,7,7,8,9,10]
 ax = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
-mapQ = mggS.mggQuartiles(ax)
+alfabetizacao = [    
+
+    57.25,76.85,92.90,89.07,75.49,84.33,65.28,94.59,71.20,82.30
+    ,72.81,66.01,90.52,87.94,58.88,86.34,45.37,81.15,94.83,81.42
+    ,54.7,67.95,69.91,95.02,77.62,57.14,91.22,64.65,85.70,81.34
+    ,59.07,68.04,73.22,95.34,88.40,83.52,64.19,64.17,95.34,84.66
+
+]
+
+mapQ = mggS.mggQuartiles(alfabetizacao)
 console.log(mapQ)
