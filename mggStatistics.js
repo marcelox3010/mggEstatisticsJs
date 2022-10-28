@@ -285,6 +285,7 @@ function summary(array){
 	r.set("stdDeviation", mggStandardDeviation(array))
 	r.set("range", mggRange(array))
 	r.set("StandardClassNumber", mggStandardClassNumber(array))
+	r.set("outLiers", mggOutLiers(array))
 
 	return r
 
