@@ -207,13 +207,10 @@ function mggQuartiles(array){
 
 		let arrayQ1 = array.slice(0, Math.trunc(n/2)+1)
 		r.set("q1", mggMedian(arrayQ1))
-
-		let iQ2 = ((n + 1)/2)-1 //-1 because array start in 0
-		console.log("indice q2 "+iQ2)
-		r.set("q2",array[iQ2])
+		
+		r.set("q2",median)
 
 		let arrayQ2 = array.slice(Math.trunc(n/2)+1, n-1)
-		console.log("impar array q1: " + arrayQ2)		
 		r.set("q3", mggMedian(arrayQ2))
 		
 		r.set("max", array[n-1])
