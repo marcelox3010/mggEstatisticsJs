@@ -63,8 +63,7 @@ function mggMode(array){
 	let maxQtd = 0
 	let mapReturn = new Map
 	let tableData = mggAux.mggTableCount(array)
-	console.log(tableData)
-
+	
 	tableData.forEach((v,k)=>{
 
 		if(v === maxQtd){
