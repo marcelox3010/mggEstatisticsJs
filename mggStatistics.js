@@ -13,9 +13,11 @@ module.exports = {
 	, mggPearsonCorrelationCoefficient
 	, mggLinearRegressionAB
 	, mggLinearRegressionPredictModel
-	, mggClassNumber
-	, mggClassAmplitude
+	, mggStandardClassNumber
+
 	, mggQuartiles
+
+
 
 };
 
@@ -171,13 +173,13 @@ function mggLinearRegressionPredictModel(mapAB, array){
 
 }
 
-function mggClassNumber(array){
+function mggStandardClassNumber(array){
 
 	return Math.ceil(Math.sqrt(dados.length))
 
 }
 
-function mggClassAmplitude(amplitude, numeroClasses){
+function mggIntervalRange(array, ClassNumber){
 
 	return amplitude / (numeroClasses - 1)
 
