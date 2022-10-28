@@ -130,3 +130,8 @@ alfabetizacao2 = [
 ]
 
 console.log(mggS.mggOutLiers(alfabetizacao2))
+
+
+console.log("Test 13 ---> OUTLIERS")
+
+console.log(mggS.summary(alfabetizacao2))

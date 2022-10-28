@@ -16,7 +16,9 @@ module.exports = {
 	, mggStandardClassNumber
 	, mggIntervalRange
 	, mggQuartiles
-	,  mggOutLiers
+	, mggOutLiers
+	, mggRange
+	, summary
 
 };
 
@@ -174,7 +176,7 @@ function mggLinearRegressionPredictModel(mapAB, array){
 
 function mggStandardClassNumber(array){
 
-	return Math.ceil(Math.sqrt(dados.length))
+	return Math.ceil(Math.sqrt(array.length))
 
 }
 
@@ -259,5 +261,33 @@ function mggOutLiers(array){
 	)
 
 	return outLiers
+
+}
+
+function mggRange(array){
+
+	if(mggAux.mggEmptyArray(array)) 	return NaN
+	if(!mggAux.mggOnlyNumbers(array)) 	return NaN
+	if(!mggAux.mggIsArraySorted(array)) array = mggAux.mggArraySort(array)
+
+	return array[array.length-1] - array[0]
+
+}
+
+function summary(array){
+
+	if(mggAux.mggEmptyArray(array)) 	return NaN
+	if(!mggAux.mggOnlyNumbers(array)) 	return NaN
+	if(!mggAux.mggIsArraySorted(array)) array = mggAux.mggArraySort(array)
+
+	let r = mggQuartiles(array)
+	r.set("sum", mggAux.mggSumArray(array))
+	r.set("mode", mggMode(array))
+	r.set("stdDeviation", mggStandardDeviation(array))
+	r.set("range", mggRange(array))
+	r.set("StandardClassNumber", mggStandardClassNumber(array))
+
+	return r
+
 
 }
