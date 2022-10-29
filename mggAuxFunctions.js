@@ -1,3 +1,16 @@
+/*
+ *  Statistics Module: Marcelo Gomes Gadelha (MGG)
+ */
+
+module.exports = {
+    mggSumArray
+    , mggEmptyArray
+    , mggOnlyNumbers
+    , mggIsArraySorted
+    , mggArraySort
+    , mggTableCount
+    , mggExponencial
+}
 
 function mggSumArray(array){
 
@@ -59,4 +72,20 @@ function mggTableCount(array){
 
 }
 
-module.exports = {mggSumArray, mggEmptyArray, mggOnlyNumbers , mggIsArraySorted, mggArraySort, mggTableCount};
+function mggExponencial(n){
+
+    if(n < 0) return NaN
+    
+    let r = 1    
+
+    for(; n > 1; n--){
+
+        r = r * n
+
+    }
+
+    return r
+
+}
+
+

@@ -279,7 +279,7 @@ function summary(array){
 	if(!mggAux.mggOnlyNumbers(array)) 	return NaN
 	if(!mggAux.mggIsArraySorted(array)) array = mggAux.mggArraySort(array)
 
-	let r = mggQuartiles(array)
+	let r = mggQuartiles(array) 
 	r.set("sum", mggAux.mggSumArray(array))
 	r.set("mode", mggMode(array))
 	r.set("stdDeviation", mggStandardDeviation(array))
