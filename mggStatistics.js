@@ -19,6 +19,7 @@ module.exports = {
 	, mggOutLiers
 	, mggRange
 	, summary
+	, mggBinomialDistribution
 
 };
 
@@ -289,5 +290,11 @@ function summary(array){
 
 	return r
 
+
+}
+
+function mggBinomialDistribution(n, x, pi){
+
+	return (mggAux.mggExponencial(n) / (mggAux.mggExponencial(n - x) * mggAux.mggExponencial(x))) * (pi**x) * ((1-pi)**(n-x))
 
 }
