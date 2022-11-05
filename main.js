@@ -140,3 +140,8 @@ console.log(mggS.summary(alfabetizacao2))
 console.log("Test 13 ---> BERNOLI")
 
 console.log(mggS.mggBinomialDistribution(4,3,0.7))
+
+
+console.log("Test 14 ---> VALOR PADRONIZADO")
+
+console.log(mggS.mggStandardValue(180,170,10))

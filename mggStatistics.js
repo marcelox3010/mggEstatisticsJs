@@ -20,6 +20,7 @@ module.exports = {
 	, mggRange
 	, summary
 	, mggBinomialDistribution
+	, mggStandardValue
 
 };
 
@@ -296,5 +297,11 @@ function summary(array){
 function mggBinomialDistribution(n, x, pi){
 
 	return (mggAux.mggExponencial(n) / (mggAux.mggExponencial(n - x) * mggAux.mggExponencial(x))) * (pi**x) * ((1-pi)**(n-x))
+
+}
+
+function mggStandardValue(value, mean, sd){
+
+	return (value - mean) / sd
 
 }
