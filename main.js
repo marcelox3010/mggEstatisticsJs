@@ -145,3 +145,19 @@ console.log(mggS.mggBinomialDistribution(4,3,0.7))
 console.log("Test 14 ---> VALOR PADRONIZADO")
 
 console.log(mggS.mggStandardValue(180,170,10))
+
+console.log("Test 15 ---> VALOR PADRONIZADO")
+
+console.log(mggS.mggStandardValue(180,170,10))
+
+
+console.log("Test 16---> bernoli vários")
+
+let aa = [0,1,2] 
+
+//console.log(aa.map((v) => { return v**2}))
+console.log(aa.map((v) => {return mggS.mggBinomialDistribution(2,v,0.5)}))
+
+//console.log(mggS.mggBinomialDistribution(4,3,0.7))
+ 
+
